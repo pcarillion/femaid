@@ -9,7 +9,7 @@ module.exports = {
     title: `Femaid`,
     description: `Femaid Projects - Women in War`,
     author: `Carol Mann`,
-    image: ``
+    image: `femaid-logo.svg`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

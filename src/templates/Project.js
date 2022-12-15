@@ -12,7 +12,6 @@ const Project = ({data}) => {
     // const {author, text,authorPresentation, title, country} = data.text
     const {title, mainPicture, description} = data.project
         const images = data.images.edges
-
           const options = renderOptions(images)
       
     return (
@@ -27,7 +26,7 @@ const Project = ({data}) => {
             <StyledProjectMain>
                 <div className="container">
                     <h1>{title}</h1>
-                    <img src={mainPicture.file.url}/>
+                    <img src={mainPicture?.file.url}/>
                     <div>
                         {documentToReactComponents(description.json, options)}
                     </div>

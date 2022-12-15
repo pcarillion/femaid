@@ -18,30 +18,31 @@ query{
         siteTitle: title
         siteDesc: description
         author
-        
+        image
       }
     }
-    favicon: file(name: {eq: "favicon"}) {
-        absolutePath
-      }
+    logo: file(name: {eq: "femaid-logo"}) {
+      publicURL
+  }
     }
 `
 
 
 function SEO({ title, description}) {
  
-  const {site, favicon} = useStaticQuery(getData);
+  const {site, logo} = useStaticQuery(getData);
 
-  console.log(favicon)
 
   const {siteDesc, siteTitle, image} = site.siteMetadata
+
+  console.log(title, image)
 
 
   return (
     <Helmet title={ title?  `${title} | ${siteTitle}` : `${siteTitle}`} htmlAttributes={{lang:"eng"}}>
             <meta name="description" content={description || siteDesc}/>
-            <meta rel="icon" href={favicon.absolutePath} />
-            <link rel="icon" href={favicon.absolutePath} type="svg"/>
+            <meta rel="icon" href={logo?.publicURL} />
+            <link rel="icon" href={logo?.publicURL} type="svg"/>
     </Helmet>
   )
 }
