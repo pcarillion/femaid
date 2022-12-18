@@ -26,7 +26,9 @@ const Project = ({data}) => {
             <StyledProjectMain>
                 <div className="container">
                     <h1>{title}</h1>
-                    <img src={mainPicture?.file.url}/>
+                    <div className="image-in-article">
+                      <img src={mainPicture?.file.url}/>
+                    </div>
                     <div>
                         {documentToReactComponents(description.json, options)}
                     </div>

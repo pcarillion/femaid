@@ -5,3 +5,20 @@ footer {
     padding: 25px;
     border-top: 1px solid lightgray;
 }
+
+.image-in-article {
+    width: 100%;
+}
+
+.image-in-article img {
+    display: block;
+    width: 70%;
+    margin: 24px auto;
+    
+}
+
+@media screen and (max-width: 1000px) {
+    .image-in-article img {
+        width: 100%;
+    }
+}

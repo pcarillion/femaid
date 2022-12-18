@@ -7,7 +7,7 @@ export const StyledProjectMain = styled.div`
         max-width: 1400px;
         display: block;
         margin: auto;
-        padding: 0 100px;
+        padding: 0 50px;
         h1 {
             text-align: center;
         }

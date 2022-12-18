@@ -29,17 +29,25 @@ const Menu = () => {
 
     const [isOpen, setNav] = useState(false)
 
+    const [MobileIsOpen, setMobileNav] = useState(false)
+
     const toggleNav = (val) => {
         setNav(val)
     }
 
+    
+    const toggleMobileNav = (val) => {
+        setMobileNav(val)
+    }
+
+    
 
     return (
         <StyledNav>
             <Link to='/'>
                 <img className='logo' src={logo?.publicURL}/>
             </Link>
-            <ul className="mainUl">
+            <ul className={`mainUl ${MobileIsOpen ? 'open' : 'closed'}`}>
                 <li>
                     <AniLink to="/">A Propos</AniLink>
                 </li>
@@ -68,6 +76,10 @@ const Menu = () => {
                     </div>
                 </li>
             </ul>
+            <div className="burger-opener" onClick={() => toggleMobileNav(!MobileIsOpen)}>
+                <div></div>
+                <div></div>
+            </div>
         </StyledNav>
     )
 }

@@ -5,10 +5,13 @@ export const StyledPageContainer = styled.div`
         max-width: 1400px;
         display: block;
         margin: 100px auto;
-        padding: 0 100px;
+        padding: 0 50px;
         a {
             font-weight: 700;
         }
+    }
+    @media screen and (max-width: 769px) {
+        /* padding: 20px; */
     }
 `
 
