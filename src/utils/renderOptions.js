@@ -1,7 +1,6 @@
 import React from "react";
 
 export const renderOptions = (images) => {
-    images = images.edges ? images.edge : images;
     return {
         renderNode : {
           "embedded-asset-block":(node)=> {

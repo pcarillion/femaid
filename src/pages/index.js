@@ -52,7 +52,7 @@ const Index = () => {
 
     const {page, images}  = useStaticQuery(getData)
 
-    const options = renderOptions(images)
+    const options = renderOptions(images.edges)
 
 
     return (

@@ -54,6 +54,8 @@ function SEO({ title, description}) {
             <meta name="description" content={description || siteDesc}/>
             <meta rel="icon" href={favicon.file.src} />
             <link rel="icon" href={favicon.file.src} type="svg"/>
+            <meta name="icon" href={`${favicon.file.src}`} />
+
     </Helmet>
   )
 }
