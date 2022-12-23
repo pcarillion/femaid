@@ -11,7 +11,13 @@ export const renderOptions = (images) => {
                 console.log(file);
               }
             }
-            console.log(file);
+            if (file?.file?.url.includes('videos')) {
+                return (
+                    <video controls className="image-in-article">
+                        <source src={file?.file?.url} type="video/mp4" />
+                    </video>
+                )
+            }
             return (<div className="image-in-article" ><img src={file?.file?.url}/> <p>{file?.description}</p></div>)
           }
         }

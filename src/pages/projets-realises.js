@@ -49,7 +49,7 @@ const Index = () => {
         <Layout>
             <SEO />
             <StyledPageContainer>
-                {/* <HomeBanner img1={page.firstPicture.file.url} img2={page.secondPicture.file.url}/> */}
+                <HomeBanner title={'Projets réalisés'} img1={page.firstPicture.file.url} img2={page.secondPicture.file.url}/>
                 <div className="container">
                   {documentToReactComponents(page.textContent.json, options)}
                 </div>

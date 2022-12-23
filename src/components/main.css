@@ -10,7 +10,7 @@ footer {
     width: 100%;
 }
 
-.image-in-article img {
+.image-in-article img, video.image-in-article {
     display: block;
     width: 70%;
     margin: 24px auto;
@@ -18,7 +18,7 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
-    .image-in-article img {
+    .image-in-article img, video.image-in-article {
         width: 100%;
     }
 }
