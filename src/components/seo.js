@@ -24,13 +24,24 @@ query{
     logo: file(name: {eq: "femaid-logo"}) {
       publicURL
   }
+  favicon:contentfulAsset(title:{eq:"logo favicone"}) {
+    file {
+      fileName
+      url
     }
+    title
+    fluid {
+      src
+    }
+  }
+    }
+
 `
 
 
 function SEO({ title, description}) {
  
-  const {site, logo} = useStaticQuery(getData);
+  const {site, logo, favicon} = useStaticQuery(getData);
 
 
   const {siteDesc, siteTitle, image} = site.siteMetadata
@@ -41,8 +52,8 @@ function SEO({ title, description}) {
   return (
     <Helmet title={ title?  `${title} | ${siteTitle}` : `${siteTitle}`} htmlAttributes={{lang:"eng"}}>
             <meta name="description" content={description || siteDesc}/>
-            <meta rel="icon" href={logo?.publicURL} />
-            <link rel="icon" href={logo?.publicURL} type="svg"/>
+            <meta rel="icon" href={favicon.file.src} />
+            <link rel="icon" href={favicon.file.src} type="svg"/>
     </Helmet>
   )
 }

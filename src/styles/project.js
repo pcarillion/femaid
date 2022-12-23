@@ -13,6 +13,7 @@ export const StyledProjectMain = styled.div`
         }
         a {
             font-weight: 700;
+            text-decoration: underline;
         }
     }
 `
