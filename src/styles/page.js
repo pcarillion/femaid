@@ -8,6 +8,7 @@ export const StyledPageContainer = styled.div`
         padding: 0 50px;
         a {
             font-weight: 700;
+            text-decoration: underline;
         }
     }
     @media screen and (max-width: 769px) {
