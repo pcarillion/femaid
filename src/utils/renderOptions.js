@@ -10,7 +10,7 @@ export const renderOptions = (images) => {
                 file = images[i].node
               }
             }
-            return (<div className="image-in-article" ><img src={file.file.url}/> <p>{file.description}</p></div>)
+            return (<div className="image-in-article" ><img src={file?.url}/> <p>{file?.description}</p></div>)
           }
         }
       }
