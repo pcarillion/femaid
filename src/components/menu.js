@@ -6,11 +6,10 @@ import TransitionLink from 'gatsby-plugin-transition-link'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 
 import { StyledNav } from '../styles/menu'
-import Project from '../templates/Project'
-
+// (order: { asc: order })
 const getData = graphql`
 query  {
-    projets: allContentfulFemaidProject {
+    projets: allContentfulFemaidProject (sort: {fields: order}) {
         edges {
           node {
             slug
