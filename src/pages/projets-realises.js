@@ -1,5 +1,3 @@
-
-
 import React from 'react'
 import SEO from '../components/seo'
 import {graphql, useStaticQuery} from "gatsby"
@@ -13,6 +11,9 @@ const getData = graphql`
 query  {
     page: contentfulFemaidPages(slug: {eq: "projets-realises"}) {
         textContent {
+          json
+        }
+        textContentEn {
           json
         }
         secondPicture {
@@ -39,19 +40,22 @@ query  {
     }
 `
 
-const Index = () => {
+const Index = ({location}) => {
     const {page, images}  = useStaticQuery(getData)
 
     const options = renderOptions(images.edges)
 
+    const isEnglish = location.pathname.includes('/en') ? true : false;
+    const title = isEnglish ? 'The story so far: Femaid from 1993-2001' : 'Projets réalisés'
+    const text = isEnglish ? page.textContentEn.json:  page.textContent.json
 
     return (
-        <Layout>
+        <Layout isEnglish={isEnglish} pathname={location.pathname}>
             <SEO />
             <StyledPageContainer>
-                <HomeBanner title={'Projets réalisés'} img1={page.firstPicture.file.url} img2={page.secondPicture.file.url}/>
+                <HomeBanner title={title} img1={page.firstPicture.file.url} img2={page.secondPicture.file.url}/>
                 <div className="container">
-                  {documentToReactComponents(page.textContent.json, options)}
+                  {documentToReactComponents(text, options)}
                 </div>
             </StyledPageContainer>
  

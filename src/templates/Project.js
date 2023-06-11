@@ -8,14 +8,20 @@ import SEO from "../components/seo"
 
 import { StyledProjectMain } from '../styles/project';
 
-const Project = ({data}) => {
+const Project = ({data, location}) => {
     // const {author, text,authorPresentation, title, country} = data.text
-    const {title, mainPicture, description} = data.project
+    const {title: titleFr, titleEn, mainPicture, description, descriptionEn} = data.project
         const images = data.images.edges
           const options = renderOptions(images)
+
+      const isEnglish = location.pathname.includes('/en') ? true : false;
+      const text = isEnglish ? descriptionEn.json : description.json;
+      const title = isEnglish ? titleEn : titleFr;
+
       
     return (
-        <Layout>
+        <Layout isEnglish={isEnglish} pathname={location.pathname}>
+          <SEO />
             {/* <SEO title={`${author} - ${country}`} description={title}/> */}
             {/* <h4>{title}</h4>
             <h5>{author} - {country}</h5>
@@ -30,7 +36,7 @@ const Project = ({data}) => {
                       <img src={mainPicture?.file.url}/>
                     </div>
                     <div>
-                        {documentToReactComponents(description.json, options)}
+                        {documentToReactComponents(text, options)}
                     </div>
                 </div>
             </StyledProjectMain>
@@ -44,7 +50,11 @@ query($slug:String){
         description {
           json
         }
+        descriptionEn {
+          json
+        }
         title
+        titleEn
         mainPicture {
           file {
             url

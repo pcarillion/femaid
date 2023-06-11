@@ -13,6 +13,9 @@ export const StyledNav = styled.nav`
     z-index: 20;
     background-color: white;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    a {
+        text-decoration: none;
+    }
     .logo {
         height: 30px;
         margin-bottom: 0;
@@ -33,10 +36,14 @@ export const StyledNav = styled.nav`
             width: 290px;
             padding: 10px 5px;
             margin: 0;
+            list-style: none;
             &:hover {
                 color: white;
                 background-color: black;
                 cursor: pointer;
+            }
+            &.lang-li {
+                font-style: italic;
             }
         }
         .projectTrigger {

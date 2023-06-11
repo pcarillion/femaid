@@ -7,31 +7,34 @@
 
 import * as React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+// import { useStaticQuery, graphql } from "gatsby"
 
 import Menu from './menu'
 import "./layout.css"
 import "./main.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const Layout = ({ children, isEnglish, pathname }) => {
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
     <>
-      <Menu/>
+      <Menu isEnglish={isEnglish} pathname={pathname}/>
       <div>
         <main>{children}</main>
         <footer>
-          L’Association n’étant pas financée régulièrement, nous dépendons de vos dons.
-          Pour faire un virement bancaire, envoyer un mail à info@femaid.org
+          {
+            isEnglish 
+            ? "As the Association is not regularly funded, we depend on your donations. To make a bank transfer, send an e-mail to info@femaid.org"
+            : "L’Association n’étant pas financée régulièrement, nous dépendons de vos dons. Pour faire un virement bancaire, envoyer un mail à info@femaid.org"
+          }
         </footer>
       </div>
     </>

@@ -4,6 +4,7 @@ import {graphql, useStaticQuery} from "gatsby"
 import { Link } from "gatsby"
 import TransitionLink from 'gatsby-plugin-transition-link'
 import AniLink from "gatsby-plugin-transition-link/AniLink";
+import LangSwitch from './utils/LangSwitch'
 
 import { StyledNav } from '../styles/menu'
 // (order: { asc: order })
@@ -14,6 +15,7 @@ query  {
           node {
             slug
             country
+            countryEng
           }
         }
     }
@@ -23,7 +25,7 @@ query  {
 }
 `
 
-const Menu = () => {
+const Menu = ({isEnglish, location, pathname}) => {
     const {logo, projets}  = useStaticQuery(getData)    
 
     const [isOpen, setNav] = useState(false)
@@ -33,12 +35,16 @@ const Menu = () => {
     const toggleNav = (val) => {
         setNav(val)
     }
-
     
     const toggleMobileNav = (val) => {
         setMobileNav(val)
     }
 
+    const urlPrefix = isEnglish ? 'en/' : '';
+    const urlReversed = isEnglish ? '/' : '/en/';
+    const aProposTxt = isEnglish ? 'Who we are' : 'A propos';
+    const projetsRealisesTxt = isEnglish ? 'The story so far' : 'Projets réalisés';
+    const projetsTxt = isEnglish ? 'Current projects' : 'Projets en cours';
     
 
     return (
@@ -47,25 +53,29 @@ const Menu = () => {
                 <img className='logo' src={logo?.publicURL}/>
             </Link>
             <ul className={`mainUl ${MobileIsOpen ? 'open' : 'closed'}`}>
-                <li>
-                    <AniLink to="/">A Propos</AniLink>
-                </li>
-                <li>
-                    <AniLink to="/projets-realises">
-                        Projets réalisés
+                    <AniLink to={`/${urlPrefix}`}>
+                        <li>
+                            {aProposTxt}
+                        </li>
                     </AniLink>
-                </li>
+                <AniLink to={`/${urlPrefix}${isEnglish ? 'completed-projects' : 'projets-realises'}`}>
+                    <li>
+                        {projetsRealisesTxt}
+                    </li>
+                </AniLink>
                 <li  onMouseOver={() => toggleNav(true)} onMouseOut={() => toggleNav(false)}>
                     <div className="projectTrigger">
-                        Projets en cours
+                        {projetsTxt}
                         <ul className={`${isOpen? 'open': ''}`}>
                             {
                                 projets.edges.map((projet, i) =>{
                                     if (projet.node.country) {
                                         return(
-                                        <li key={i}>
-                                        <AniLink to={`/project/${projet.node.slug}`}>{projet.node.country}</AniLink>
-                                        </li>
+                                        <AniLink to={`/${urlPrefix}project/${projet.node.slug}`}>
+                                            <li key={i}>
+                                                {isEnglish? projet?.node?.countryEng : projet?.node?.country}
+                                            </li>
+                                        </AniLink>
                                     )} else {
                                         return null;
                                     }
@@ -74,6 +84,11 @@ const Menu = () => {
                         </ul>
                     </div>
                 </li>
+                <AniLink to={`${urlReversed}`}>
+                    <li className="lang-li">
+                        {isEnglish ? 'Français' : 'English'}
+                    </li>
+                </AniLink>
             </ul>
             <div className="burger-opener" onClick={() => toggleMobileNav(!MobileIsOpen)}>
                 <div></div>

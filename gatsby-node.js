@@ -25,5 +25,14 @@ exports.createPages = async ({graphql, actions}) => {
             }
         })
     })
+    data.projects.edges.forEach(({node}) =>{
+        createPage({
+            path: `/en/project/${node.slug}`,
+            component: path.resolve("./src/templates/Project.js"),
+            context:{
+                slug: node.slug,
+            }
+        })
+    })
 
 }
