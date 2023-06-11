@@ -8,7 +8,7 @@
     "source-map": "^0.8.0-beta.0"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^15.17.0",
+    "@contentful/rich-text-react-renderer": "^13.4.0",
     "contentful": "^7.14.4",
     "dotenv": "^8.6.0",
     "gatsby": "^3.11.1",
