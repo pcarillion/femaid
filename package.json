@@ -12,7 +12,7 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "contentful": "^7.14.4",
     "dotenv": "^8.6.0",
-    "gatsby": "^3.11.1",
+    "gatsby": "^3.13.1",
     "gatsby-plugin-gatsby-cloud": "^2.11.0",
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.11.0",
