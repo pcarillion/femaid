@@ -54,8 +54,8 @@ const Index = ({location}) => {
             <SEO />
             <StyledPageContainer>
                 <HomeBanner title={title} img1={page.firstPicture.file.url} img2={page.secondPicture.file.url}/>
-                {video && <div className="video-in-article">
-                  <iframe width="560" height="315" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                {page.video && <div className="video-in-article">
+                  <iframe width="560" height="315" src={page.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                 </div>}
                 <div className="container">
                   {documentToReactComponents(text, options)}

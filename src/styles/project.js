@@ -17,6 +17,10 @@ export const StyledProjectMain = styled.div`
         }
         .video-in-article {
             margin: 20px 0;
+            iframe {
+                display: block;
+                margin: 0 auto;
+            }
         }
     }
 `
