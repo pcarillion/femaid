@@ -15,5 +15,8 @@ export const StyledProjectMain = styled.div`
             font-weight: 700;
             text-decoration: underline;
         }
+        .video-in-article {
+            margin: 20px 0;
+        }
     }
 `

@@ -10,7 +10,7 @@ import { StyledProjectMain } from '../styles/project';
 
 const Project = ({data, location}) => {
     // const {author, text,authorPresentation, title, country} = data.text
-    const {title: titleFr, titleEn, mainPicture, description, descriptionEn} = data.project
+    const {title: titleFr, titleEn, mainPicture, description, descriptionEn, video} = data.project
         const images = data.images.edges
           const options = renderOptions(images)
 
@@ -35,6 +35,9 @@ const Project = ({data, location}) => {
                     <div className="image-in-article">
                       <img src={mainPicture?.file.url}/>
                     </div>
+                    {video && <div className="video-in-article">
+                      <iframe width="560" height="315" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>}
                     <div>
                         {documentToReactComponents(text, options)}
                     </div>
@@ -53,6 +56,7 @@ query($slug:String){
         descriptionEn {
           json
         }
+        video
         title
         titleEn
         mainPicture {

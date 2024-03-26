@@ -10,6 +10,9 @@ export const StyledPageContainer = styled.div`
             font-weight: 700;
             text-decoration: underline;
         }
+        .video-in-article {
+            margin: 20px 0;
+        }
     }
     @media screen and (max-width: 769px) {
         /* padding: 20px; */
